@@ -1,0 +1,16 @@
+# Maven output
+target/
+
+# Compiled Java
+*.class
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
