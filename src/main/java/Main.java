@@ -2,27 +2,26 @@ package src.main.java;
 public class Main {
     public static void main(String[] args) {
 
-        Book b1 = new Book("OOP", "Author", "111", 11);
+        Library library = new Library();
 
-        // User s1 = new Student("Ali", "S01", 1);
-        // User t1 = new Teacher("Dr. Ahmed", "T01", "Computer Science");
-        User u1 = new Student("Sahil", "U01");
+        User student = new Student("Ali", "S1");
+        User teacher = new Teacher("Ahmed", "T1", "CS");
 
-        // u1.borrowBook(b1); // User version
-        // s1.borrowBook(b1); // Student version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        // t1.borrowBook(b1); // Teacher version
-        u1.borrowBook(b1); // User version
-        u1.borrowBook(b1); // User version
-        u1.borrowBook(b1); // User version
+        library.addUser(student);
+        library.addUser(teacher);
+
+        Book book = new Book("Java Basics", "Author", "111", 1);
+        library.addBook(book);
+
+        // Borrow
+        library.borrowBook("S1", "111");
+
+        // Return
+        library.returnBook("S1", "111");
+
+        // Borrow again
+        library.borrowBook("T1", "111");
+        library.borrowBook("S1", "111");
     }
+
 }

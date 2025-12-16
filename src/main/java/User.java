@@ -30,5 +30,16 @@ public class User {
         System.out.println(name + " borrowed " + book.getTitle());
         return true;
     }
+
+    public boolean returnBook(Book book){
+        if (getBooksBorrowed() <= 0){
+            System.out.println(getName() + " has no books to return.");
+            return false;
+        }
+        book.setCopiesAvailable(book.getCopiesAvailable() + 1 );
+        booksBorrowed--;
+        System.out.println(getName() + " returned " + book.getTitle());
+        return true;
+    }
 }
 
