@@ -1,4 +1,3 @@
-package src.main.java;
 public class Main {
     public static void main(String[] args) {
 
@@ -12,16 +11,10 @@ public class Main {
 
         Book book = new Book("Java Basics", "Author", "111", 1);
         library.addBook(book);
-
-        // Borrow
-        library.borrowBook("S1", "111");
-
-        // Return
-        library.returnBook("S1", "111");
-
-        // Borrow again
-        library.borrowBook("T1", "111");
-        library.borrowBook("S1", "111");
+        library.borrowBook("S1", "111"); // Student borrows the book
+        library.borrowBook("T1", "111"); // Teacher tries to borrow the same book
+        library.returnBook("S1", "111"); // Student returns the book
+        library.borrowBook("T1", "111"); // Teacher borrows the book
+        library.returnBook("T1", "111"); // Teacher returns the book
     }
-
 }

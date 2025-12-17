@@ -1,4 +1,3 @@
-package src.main.java;
 public class Teacher extends User {
 
     private static final int DEFAULT_MAX_BOOKS = 10;
@@ -20,6 +19,19 @@ public class Teacher extends User {
                     + " has reached borrow limit (" + DEFAULT_MAX_BOOKS + " books).");
             return false;
         }
+        System.out.println("Teacher " + getName() + " borrowed " + book.getTitle());
         return super.borrowBook(book);
+    }
+    @Override
+    public boolean returnBook(Book book){
+        if (getBooksBorrowed() <= 0){
+            System.out.println("Teacher " + getName() + " has no books to return.");
+            return false;
+        }
+        boolean result = super.returnBook(book);
+        if (result) {
+            System.out.println("Teacher " + getName() + " returned " + book.getTitle());
+        }
+        return result;
     }
 }

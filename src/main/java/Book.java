@@ -1,4 +1,3 @@
-package src.main.java;
 class Book {
     private String title;
     private String author;
