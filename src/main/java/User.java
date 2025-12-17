@@ -18,23 +18,31 @@ public class User {
     public int getBooksBorrowed(){
         return booksBorrowed;
     }
-    public boolean borrowBook(Book book){
-        if(book.getCopiesAvailable() <= 0){
-            System.out.println("No copies available for " + book.getTitle());
+    public boolean borrowItem(Borrowable item){
+        if (item == null) {
+    System.out.println("Invalid item.");
+    return false;
+}
+        if(!item.borrowItem()){
+            System.out.println("No copies available for borrowing.");
             return false;
         }
-        book.setCopiesAvailable(book.getCopiesAvailable()-1);
-
         booksBorrowed++;
+        System.out.println(getName() + " borrowed " + item.getDisplayName());
         return true;
     }
 
-    public boolean returnBook(Book book){
-        if (getBooksBorrowed() <= 0){
+    public boolean returnItem(Borrowable item){
+        if (item == null) {
+    System.out.println("Invalid item.");
+    return false;
+}
+        if (booksBorrowed <= 0){
             return false;
         }
-        book.setCopiesAvailable(book.getCopiesAvailable() + 1 );
+        item.returnItem();
         booksBorrowed--;
+        System.out.println( getName() + " returned " + item.getDisplayName());
         return true;
     }
 }

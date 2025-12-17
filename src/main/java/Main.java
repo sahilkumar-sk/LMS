@@ -11,10 +11,10 @@ public class Main {
 
         Book book = new Book("Java Basics", "Author", "111", 1);
         library.addBook(book);
-        library.borrowBook("S1", "111"); // Student borrows the book
-        library.borrowBook("T1", "111"); // Teacher tries to borrow the same book
-        library.returnBook("S1", "111"); // Student returns the book
-        library.borrowBook("T1", "111"); // Teacher borrows the book
-        library.returnBook("T1", "111"); // Teacher returns the book
+        library.borrowItem("S1", "111"); // Student borrows the book
+        library.borrowItem("T1", "111"); // Teacher tries to borrow the same book
+        library.returnItem("S1", "111"); // Student returns the book
+        library.borrowItem("T1", "111"); // Teacher borrows the book
+        library.returnItem("T1", "111"); // Teacher returns the book
     }
 }

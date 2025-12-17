@@ -1,4 +1,4 @@
-class Book {
+public class Book implements Borrowable {
     private String title;
     private String author;
     private String isbn;
@@ -10,6 +10,10 @@ public Book(String title, String author, String isbn, int copiesAvailable){
     this.author = author;
     this.isbn = isbn;
     this.copiesAvailable = copiesAvailable;
+}
+@Override
+public String getDisplayName() {
+    return title;
 }
 
     public String getTitle (){
@@ -29,5 +33,16 @@ public Book(String title, String author, String isbn, int copiesAvailable){
         if (copiesAvailable >= 0){
             this.copiesAvailable = copiesAvailable;
         }
+    }
+    public boolean borrowItem(){
+        if (copiesAvailable <= 0){
+            return false;
+        }
+        copiesAvailable--;
+        return true;
+    }
+    public boolean returnItem(){
+        copiesAvailable++;
+        return true;
     }
 }

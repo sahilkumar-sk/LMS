@@ -3,36 +3,36 @@ import java.util.Map;
 
 public class Library {
     private Map<String, User> users = new HashMap<>();
-    private Map<String, Book> books = new HashMap<>();
+    private Map<String, Borrowable> items = new HashMap<>();
     
     public void addUser(User user){
         users.put(user.getUserId(), user);
     }
 
     public void addBook(Book book){
-        books.put(book.getIsbn(), book);
+        items.put(book.getIsbn(), book);
     }
 
-    public void borrowBook(String userId, String isbn){
+    public void borrowItem(String userId, String isbn){
         User user = users.get(userId);
-        Book book = books.get(isbn);
+        Borrowable item = items.get(isbn);
 
-        if(user==null || book==null){
-            System.out.println("Invalid user ID or book ISBN.");
+        if(user==null || item==null){
+            System.out.println("Invalid user ID or item ISBN.");
             return;
         }
 
-        user.borrowBook(book);
+        user.borrowItem(item);
     }
-    public void returnBook(String userId, String isbn){
+    public void returnItem(String userId, String isbn){
         User user = users.get(userId);
-        Book book = books.get(isbn);
+        Borrowable item = items.get(isbn);
 
-        if(user==null || book==null){
-            System.out.println("Invalid user ID or book ISBN.");
+        if(user==null || item==null){
+            System.out.println("Invalid user ID or item ISBN.");
             return;
         }
 
-        user.returnBook(book);
+        user.returnItem(item);
     }
 }

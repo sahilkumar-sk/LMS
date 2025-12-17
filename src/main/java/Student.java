@@ -9,24 +9,21 @@ public class Student extends User {
         return DEFAULT_MAX_BOOKS;
     }
     @Override
-    public boolean borrowBook(Book book){
-        // Students have a limit on the number of books they can borrow
+    public boolean borrowItem(Borrowable item){
         if(getBooksBorrowed() >= DEFAULT_MAX_BOOKS){
-            System.out.println("Student " + getName() + " has reached borrow limit (" + DEFAULT_MAX_BOOKS + " books).");
+            System.out.println(getName() +   " has reached borrow limit (" + DEFAULT_MAX_BOOKS + " items).");
             return false;
         }
-        System.out.println("Student " + getName() + " borrowed " + book.getTitle());
-        return super.borrowBook(book);
+        super.borrowItem(item);
+        return true;
     }
     @Override
-    public boolean returnBook(Book book){
+    public boolean returnItem(Borrowable item){
         if(getBooksBorrowed() <= 0){
-            System.out.println("Student " + getName() + " has no books to return.");
+            System.out.println(getName() + " has no items to return.");
             return false;
         }
-        super.returnBook(book);
-        
-        System.out.println("Student " + getName() + " returned " + book.getTitle());
+        super.returnItem(item);
         return true;
     }
 }
