@@ -9,21 +9,21 @@ public class Student extends User {
         return DEFAULT_MAX_BOOKS;
     }
     @Override
-    public boolean borrowItem(Borrowable item){
-        if(getBooksBorrowed() >= DEFAULT_MAX_BOOKS){
+    public boolean borrowItem(Borrowable item, String isbn){
+        if(getBorrowedCount() >= DEFAULT_MAX_BOOKS){
             System.out.println(getName() +   " has reached borrow limit (" + DEFAULT_MAX_BOOKS + " items).");
             return false;
         }
-        super.borrowItem(item);
+        super.borrowItem(item, isbn);
         return true;
     }
     @Override
-    public boolean returnItem(Borrowable item){
-        if(getBooksBorrowed() <= 0){
+    public boolean returnItem(Borrowable item, String isbn){
+        if(getBorrowedCount() <= 0){
             System.out.println(getName() + " has no items to return.");
             return false;
         }
-        super.returnItem(item);
+        super.returnItem(item, isbn);
         return true;
     }
 }

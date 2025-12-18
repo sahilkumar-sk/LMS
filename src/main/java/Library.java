@@ -22,7 +22,7 @@ public class Library {
             return;
         }
 
-        user.borrowItem(item);
+        user.borrowItem(item, isbn);
     }
     public void returnItem(String userId, String isbn){
         User user = users.get(userId);
@@ -33,6 +33,6 @@ public class Library {
             return;
         }
 
-        user.returnItem(item);
+        user.returnItem(item, isbn);
     }
 }

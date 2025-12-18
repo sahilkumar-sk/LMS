@@ -1,49 +1,62 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String name;
     private String userId;
-    private int booksBorrowed;
+    private List<String> borrowedIsbns = new ArrayList<>();
 
     public User(String name, String userId){
         this.name = name;
         this.userId = userId;
-        this.booksBorrowed = 0;
-
     }
+
     public String getName(){
         return name;
     }
+
     public String getUserId(){
         return userId;
     }
-    public int getBooksBorrowed(){
-        return booksBorrowed;
+
+    public int getBorrowedCount(){
+        return borrowedIsbns.size();
     }
-    public boolean borrowItem(Borrowable item){
-        if (item == null) {
-    System.out.println("Invalid item.");
-    return false;
-}
-        if(!item.borrowItem()){
+
+    public boolean hasBorrowed(String isbn){
+        return borrowedIsbns.contains(isbn);
+    }
+
+    public boolean borrowItem(Borrowable item, String isbn){
+        if (item == null || isbn == null) {
+            System.out.println("Invalid item.");
+            return false;
+        }
+
+        if (!item.borrowItem()){
             System.out.println("No copies available for borrowing.");
             return false;
         }
-        booksBorrowed++;
+
+        borrowedIsbns.add(isbn);
         System.out.println(getName() + " borrowed " + item.getDisplayName());
         return true;
     }
 
-    public boolean returnItem(Borrowable item){
-        if (item == null) {
-    System.out.println("Invalid item.");
-    return false;
-}
-        if (booksBorrowed <= 0){
+    public boolean returnItem(Borrowable item, String isbn){
+        if (item == null || isbn == null) {
+            System.out.println("Invalid item.");
             return false;
         }
+
+        if (!borrowedIsbns.contains(isbn)) {
+            System.out.println(getName() + " did NOT borrow this item.");
+            return false;
+        }
+
         item.returnItem();
-        booksBorrowed--;
-        System.out.println( getName() + " returned " + item.getDisplayName());
+        borrowedIsbns.remove(isbn);
+        System.out.println(getName() + " returned " + item.getDisplayName());
         return true;
     }
 }
-
