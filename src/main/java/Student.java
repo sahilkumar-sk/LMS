@@ -5,6 +5,11 @@ public class Student extends User {
         super(name, userId);
     }
 
+    @Override
+    public int getBorrowLimit() {
+        return DEFAULT_MAX_BOOKS;
+    }
+
     public int getMaxBooksAllowed(){
         return DEFAULT_MAX_BOOKS;
     }

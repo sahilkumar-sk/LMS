@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public abstract class User {
     private String name;
     private String userId;
     private List<String> borrowedIsbns = new ArrayList<>();
@@ -22,6 +22,7 @@ public class User {
     public int getBorrowedCount(){
         return borrowedIsbns.size();
     }
+    public abstract int getBorrowLimit();
 
     public boolean hasBorrowed(String isbn){
         return borrowedIsbns.contains(isbn);
@@ -31,6 +32,11 @@ public class User {
         if (item == null || isbn == null) {
             System.out.println("Invalid item.");
             return false;
+        }
+        
+        if (getBorrowedCount() >= getBorrowLimit()) {
+        System.out.println(getName() + " has reached borrow limit (" + getBorrowLimit() + " items).");
+        return false;
         }
 
         if (!item.borrowItem()){

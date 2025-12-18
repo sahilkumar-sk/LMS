@@ -2,6 +2,8 @@ public class Teacher extends User {
     private static final int DEFAULT_MAX_BOOKS = 10;
     private String department;
 
+    
+
     public Teacher(String name, String userId, String department) {
         super(name, userId);
         this.department = department;
@@ -11,6 +13,10 @@ public class Teacher extends User {
         return department;
     }
 
+    @Override
+    public int getBorrowLimit() {
+        return DEFAULT_MAX_BOOKS;
+    }
     @Override
     public boolean borrowItem(Borrowable item, String isbn){
         if (getBorrowedCount() >= DEFAULT_MAX_BOOKS) {
